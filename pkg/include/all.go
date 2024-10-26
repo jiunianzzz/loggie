@@ -73,4 +73,5 @@ import (
 	_ "github.com/loggie-io/loggie/pkg/source/kubernetes_event"
 	_ "github.com/loggie-io/loggie/pkg/source/prometheus_exporter"
 	_ "github.com/loggie-io/loggie/pkg/source/unix"
+	_ "github.com/loggie-io/loggie/pkg/source/wineventlog"
 )

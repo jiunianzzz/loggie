@@ -6,7 +6,7 @@ import (
 	"time"
 
 	jsoniter "github.com/json-iterator/go"
-	"github.com/prometheus/prometheus/promql/parser"
+	"github.com/prometheus/prometheus/promql"
 )
 
 // Stream contains a unique labels set as a string and a set of entries for it.
@@ -29,7 +29,8 @@ func (r *PushRequest) MarshalJSON() ([]byte, error) {
 		stream.WriteObjectStart()
 		stream.WriteObjectField("stream")
 		stream.WriteObjectStart()
-		lbs, err := parser.ParseMetric(s.Labels)
+
+		lbs, err := promql.ParseMetric(s.Labels)
 		if err != nil {
 			continue
 		}

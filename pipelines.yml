@@ -1,12 +1,30 @@
 pipelines:
   - name: local
     sources:
-      - type: file
-        name: demo
-        paths:
-          - /tmp/log/*.log
-        fields:
-          topic: "loggie"
+      - type: wineventlog
+        eventLogName: Application
+        name: demo1
+        eventTotal: 1000  # 没有发挥作用，需要
+        byteReadSize: 100
+        qps: 20
+      - type: wineventlog
+        eventLogName: System
+        name: demo2
+        eventTotal: 1000
+        byteSize: 1024
+        qps: 20
+      - type: wineventlog
+        eventLogName: Security
+        name: demo3
+        eventTotal: 1000
+        byteSize: 1024
+        qps: 20
+      - type: wineventlog
+        eventLogName: Setup
+        name: demo4
+        eventTotal: 1000
+        byteSize: 1024
+        qps: 20
     sink:
       type: dev
       codec:

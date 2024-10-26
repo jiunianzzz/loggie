@@ -15,34 +15,34 @@ loggie:
       queue: ~
       pipeline: ~
       sys: ~
+#
+#  discovery:
+#    enabled: false
+#    kubernetes:
+#      containerRuntime: containerd
+#      kubeconfig: ~/.kube/config
+#      typePodFields:
+#        namespace: "${_k8s.pod.namespace}"
+#        podname: "${_k8s.pod.name}"
+#        containername: "${_k8s.pod.container.name}"
+#        nodename: "${_k8s.node.name}"
+#        logconfig: "${_k8s.logconfig}"
 
-  discovery:
-    enabled: false
-    kubernetes:
-      containerRuntime: containerd
-      kubeconfig: ~/.kube/config
-      typePodFields:
-        namespace: "${_k8s.pod.namespace}"
-        podname: "${_k8s.pod.name}"
-        containername: "${_k8s.pod.container.name}"
-        nodename: "${_k8s.node.name}"
-        logconfig: "${_k8s.logconfig}"
-
-  defaults:
-    sink:
-      type: dev
-    sources:
-      - type: file
-        timestampKey: "@timestamp"
-        bodyKey: "message"
-        fieldsUnderRoot: true
-        addonMeta: true
-        addonMetaSchema:
-          underRoot: true
-          fields:
-            filename: "${_meta.filename}"
-            line: "${_meta.line}"
-        watcher:
-          maxOpenFds: 6000
+#  defaults:
+#    sink:
+#      type: dev
+#    sources:
+#      - type: file
+#        timestampKey: "@timestamp"
+#        bodyKey: "message"
+#        fieldsUnderRoot: true
+#        addonMeta: true
+#        addonMetaSchema:
+#          underRoot: true
+#          fields:
+#            filename: "${_meta.filename}"
+#            line: "${_meta.line}"
+#        watcher:
+#          maxOpenFds: 6000
   http:
     enabled: true
